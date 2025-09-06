@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Performance Dataset 2025 - 数据看板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f8f9fc 0%, #e9ecf4 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header h1 {
+            color: #34495e;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .chart-section {
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .chart-header {
+            background: #f8f9fc;
+            padding: 20px;
+            border-bottom: 1px solid #e3e7f0;
+        }
+
+        .chart-title {
+            color: #34495e;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .chart-subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .chart-content {
+            padding: 30px;
+            height: 400px;
+        }
+
+        .ranking-list {
+            padding: 20px;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f2f6;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 15px;
+        }
+
+        .rank-info {
+            flex: 1;
+        }
+
+        .rank-label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        .rank-detail {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .rank-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-content {
+                padding: 20px;
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Agentic AI Performance Dataset 2025</h1>
+            <p>AI智能体表现数据综合分析看板</p>
+        </div>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">80</div>
+                <div class="stat-label">实际处理数据记录数</div>
+            </div>
+        </div>
+
+        <!-- Question 1: Agent Types Multimodal Support -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">智能体类型多模态支持占比排名</div>
+                    <div class="chart-subtitle">支持多模态处理的智能体类型在该类型中的占比前三名</div>
+                </div>
+                <div class="ranking-list">
+                    <div class="ranking-item">
+                        <div class="rank-number">1</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Research Assistant</div>
+                            <div class="rank-detail">3个支持多模态 / 总共5个智能体</div>
+                        </div>
+                        <div class="rank-value">60.0%</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">2</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Document Processor</div>
+                            <div class="rank-detail">2个支持多模态 / 总共6个智能体</div>
+                        </div>
+                        <div class="rank-value">33.33%</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">3</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Sales Assistant</div>
+                            <div class="rank-detail">2个支持多模态 / 总共7个智能体</div>
+                        </div>
+                        <div class="rank-value">28.57%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 1 Chart -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">智能体类型多模态支持可视化</div>
+                    <div class="chart-subtitle">柱状图展示各智能体类型的多模态支持占比</div>
+                </div>
+                <div class="chart-content">
+                    <canvas id="agentTypeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2: Model Architecture Multimodal Support -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">大模型架构多模态支持占比排名</div>
+                    <div class="chart-subtitle">支持多模态处理的大模型架构在该架构中的占比前三名</div>
+                </div>
+                <div class="ranking-list">
+                    <div class="ranking-item">
+                        <div class="rank-number">1</div>
+                        <div class="rank-info">
+                            <div class="rank-label">GPT-4o</div>
+                            <div class="rank-detail">3个支持多模态 / 总共8个实例</div>
+                        </div>
+                        <div class="rank-value">37.5%</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">2</div>
+                        <div class="rank-info">
+                            <div class="rank-label">CodeT5+</div>
+                            <div class="rank-detail">3个支持多模态 / 总共9个实例</div>
+                        </div>
+                        <div class="rank-value">33.33%</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">3</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Transformer-XL</div>
+                            <div class="rank-detail">2个支持多模态 / 总共10个实例</div>
+                        </div>
+                        <div class="rank-value">20.0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 Chart -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">大模型架构多模态支持可视化</div>
+                    <div class="chart-subtitle">柱状图展示各大模型架构的多模态支持占比</div>
+                </div>
+                <div class="chart-content">
+                    <canvas id="modelArchChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3: Task Category Bias Detection -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">任务类别公正性中位数排名</div>
+                    <div class="chart-subtitle">各智能体处理任务类别的公正性（bias detection）中位数前三名</div>
+                </div>
+                <div class="ranking-list">
+                    <div class="ranking-item">
+                        <div class="rank-number">1</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Communication</div>
+                            <div class="rank-detail">通信相关任务处理</div>
+                        </div>
+                        <div class="rank-value">0.82</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">2</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Research & Summarization</div>
+                            <div class="rank-detail">研究与总结任务处理</div>
+                        </div>
+                        <div class="rank-value">0.79</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number">3</div>
+                        <div class="rank-info">
+                            <div class="rank-label">Decision Making</div>
+                            <div class="rank-detail">决策制定任务处理</div>
+                        </div>
+                        <div class="rank-value">0.78</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 Chart -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">任务类别公正性中位数可视化</div>
+                    <div class="chart-subtitle">柱状图展示各任务类别的公正性中位数</div>
+                </div>
+                <div class="chart-content">
+                    <canvas id="taskBiasChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js configuration
+        Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        Chart.defaults.color = '#7f8c8d';
+
+        // Agent Type Chart
+        const agentTypeCtx = document.getElementById('agentTypeChart').getContext('2d');
+        new Chart(agentTypeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Research Assistant', 'Document Processor', 'Sales Assistant'],
+                datasets: [{
+                    label: '多模态支持占比 (%)',
+                    data: [60.0, 33.33, 28.57],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.8)',
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(155, 89, 182, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(155, 89, 182, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 70,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Model Architecture Chart
+        const modelArchCtx = document.getElementById('modelArchChart').getContext('2d');
+        new Chart(modelArchCtx, {
+            type: 'bar',
+            data: {
+                labels: ['GPT-4o', 'CodeT5+', 'Transformer-XL'],
+                datasets: [{
+                    label: '多模态支持占比 (%)',
+                    data: [37.5, 33.33, 20.0],
+                    backgroundColor: [
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(230, 126, 34, 0.8)',
+                        'rgba(52, 73, 94, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(230, 126, 34, 1)',
+                        'rgba(52, 73, 94, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 45,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Task Category Bias Chart
+        const taskBiasCtx = document.getElementById('taskBiasChart').getContext('2d');
+        new Chart(taskBiasCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Communication', 'Research & Summarization', 'Decision Making'],
+                datasets: [{
+                    label: '公正性中位数',
+                    data: [0.82, 0.79, 0.78],
+                    backgroundColor: [
+                        'rgba(26, 188, 156, 0.8)',
+                        'rgba(52, 152, 219, 0.8)',
+                        'rgba(142, 68, 173, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(26, 188, 156, 1)',
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(142, 68, 173, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1.0,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
