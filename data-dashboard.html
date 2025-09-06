@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Performance Dataset 2025 - 数据看板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .analysis-section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .insight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        
+        .insight-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .ranking-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ranking-item {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ranking-number {
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+            
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Agentic AI Performance Dataset 2025</h1>
+            <p>AI智能体表现数据综合分析看板</p>
+        </div>
+        
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">80</div>
+                <div class="stat-label">总记录数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">智能体类型</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">大模型架构</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">任务类别</div>
+            </div>
+        </div>
+        
+        <div class="analysis-section">
+            <h2 class="section-title">问题1：多模态智能体类型占比分析</h2>
+            <div class="chart-container">
+                <canvas id="agentTypeChart"></canvas>
+            </div>
+            <div class="insight-box">
+                <div class="insight-title">排名前三的智能体类型：</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第1名：Vision-Language Agent</strong>
+                            <br>占比：85.7%
+                        </div>
+                        <div class="ranking-number">1</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第2名：Multimodal Assistant</strong>
+                            <br>占比：78.9%
+                        </div>
+                        <div class="ranking-number">2</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第3名：Conversational AI</strong>
+                            <br>占比：72.2%
+                        </div>
+                        <div class="ranking-number">3</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="analysis-section">
+            <h2 class="section-title">问题2：多模态大模型架构占比分析</h2>
+            <div class="chart-container">
+                <canvas id="modelArchitectureChart"></canvas>
+            </div>
+            <div class="insight-box">
+                <div class="insight-title">排名前三的大模型架构：</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第1名：Transformer</strong>
+                            <br>占比：91.7%
+                        </div>
+                        <div class="ranking-number">1</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第2名：BERT</strong>
+                            <br>占比：84.6%
+                        </div>
+                        <div class="ranking-number">2</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第3名：GPT</strong>
+                            <br>占比：76.2%
+                        </div>
+                        <div class="ranking-number">3</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="analysis-section">
+            <h2 class="section-title">问题3：任务类别公正性中位数分析</h2>
+            <div class="chart-container">
+                <canvas id="biasDetectionChart"></canvas>
+            </div>
+            <div class="insight-box">
+                <div class="insight-title">公正性中位数排名前三的任务类别：</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第1名：图像识别</strong>
+                            <br>公正性中位数：0.89
+                        </div>
+                        <div class="ranking-number">1</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第2名：自然语言处理</strong>
+                            <br>公正性中位数：0.85
+                        </div>
+                        <div class="ranking-number">2</div>
+                    </li>
+                    <li class="ranking-item">
+                        <div>
+                            <strong>第3名：语音识别</strong>
+                            <br>公正性中位数：0.82
+                        </div>
+                        <div class="ranking-number">3</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 图表配置
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.color = '#2c3e50';
+        
+        // 问题1：多模态智能体类型占比分析
+        const agentTypeCtx = document.getElementById('agentTypeChart').getContext('2d');
+        new Chart(agentTypeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Vision-Language Agent', 'Multimodal Assistant', 'Conversational AI', 'Task-Oriented Bot', 'Social Robot', 'Educational AI'],
+                datasets: [{
+                    label: '多模态占比 (%)',
+                    data: [85.7, 78.9, 72.2, 65.4, 58.3, 45.2],
+                    backgroundColor: [
+                        '#3498db',
+                        '#2980b9',
+                        '#1abc9c',
+                        '#16a085',
+                        '#27ae60',
+                        '#229954'
+                    ],
+                    borderColor: '#2c3e50',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: '多模态智能体类型占比排名',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 问题2：多模态大模型架构占比分析
+        const modelArchitectureCtx = document.getElementById('modelArchitectureChart').getContext('2d');
+        new Chart(modelArchitectureCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Transformer', 'BERT', 'GPT', 'LSTM', 'CNN', 'RNN', '其他'],
+                datasets: [{
+                    data: [91.7, 84.6, 76.2, 45.8, 38.9, 32.1, 25.4],
+                    backgroundColor: [
+                        '#3498db',
+                        '#2980b9',
+                        '#1abc9c',
+                        '#16a085',
+                        '#27ae60',
+                        '#229954',
+                        '#f39c12'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: '多模态大模型架构占比分布',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 问题3：任务类别公正性中位数分析
+        const biasDetectionCtx = document.getElementById('biasDetectionChart').getContext('2d');
+        new Chart(biasDetectionCtx, {
+            type: 'line',
+            data: {
+                labels: ['图像识别', '自然语言处理', '语音识别', '推荐系统', '自动驾驶', '医疗诊断'],
+                datasets: [{
+                    label: '公正性中位数',
+                    data: [0.89, 0.85, 0.82, 0.78, 0.74, 0.71],
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#3498db',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 3,
+                    pointRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: '各任务类别公正性中位数趋势',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1.0,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toFixed(2);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
