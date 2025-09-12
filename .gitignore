@@ -67,3 +67,6 @@ datasets/
 # 浏览器缓存和调试文件
 .cache/
 coverage/
+
+# excel临时文件
+~$*
