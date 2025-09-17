@@ -4,58 +4,58 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a data analysis project for the "Agentic AI Performance Dataset 2025". The project is currently in its initial state on the main branch, containing only the raw dataset and project configuration.
+This is a complete data analysis and dashboard project for the "Agentic AI Performance Dataset 2025". The project has been implemented with Python data analysis backend and HTML/CSS/JavaScript frontend.
 
-## Current State (main branch)
+## Current Implementation
 
 The repository contains:
-- **Dataset**: `first-80-rows-agentic_ai_performance_dataset_20250622.xlsx` (19KB Excel file with 80 rows of AI performance data)
-- **Configuration**: `.codebuddy/analysis-summary.json` with project specifications
-- **Git setup**: `.gitignore` configured for the project
+- **Datasets**:
+  - `first-80-rows-agentic_ai_performance_dataset_20250622.xlsx` (original dataset)
+  - `correct-answers-for-80-rows.xlsx` (validation data)
+- **Analysis Engine**: `analyze_data.py` (Python script with pandas for data processing)
+- **Dashboard**: `data-dashboard.html` (complete HTML dashboard with Chart.js visualizations)
+- **Generated Data**:
+  - `analysis_results.json` (raw analysis output)
+  - `dashboard_data.json` (formatted data for dashboard)
+- **Configuration Scripts**: PowerShell and shell scripts for LLM API integration
 
-## Planned Architecture (from .codebuddy config)
+## Architecture
 
-According to the project configuration, this will be an "Agentic AI数据分析看板系统" with:
-
-**Features:**
-- Excel数据读取处理 (Excel data reading and processing)
-- 多维度数据分析 (Multi-dimensional data analysis) 
-- 静态HTML看板生成 (Static HTML dashboard generation)
-- 数据可视化图表 (Data visualization charts)
+**Data Flow:**
+1. `analyze_data.py` reads Excel files using pandas
+2. Processes data for multimodal agent analysis and fairness metrics
+3. Outputs structured JSON data
+4. `data-dashboard.html` consumes JSON for interactive visualizations
 
 **Tech Stack:**
-- Backend: Python + pandas + openpyxl + numpy
-- Frontend: HTML5 + CSS3 + Chart.js + Bootstrap + JavaScript
-- Output: 静态HTML文件 + 内联资源 (Static HTML files with inline resources)
+- **Backend**: Python + pandas + openpyxl
+- **Frontend**: HTML5 + CSS3 + Chart.js + vanilla JavaScript
+- **Output**: Self-contained HTML with inline resources and external CDN dependencies
 
-**Design Approach:**
-- 现代简约浅色调设计 (Modern minimalist light color design)
-- 白色主背景配浅蓝色卡片 (White background with light blue cards)
-- 响应式布局 (Responsive layout)
-- 统计卡片、排名列表和交互式图表 (Statistics cards, ranking lists, and interactive charts)
+**Key Analysis Functions:**
+- `analyze_multimodal_agent_types()`: Agent type distribution analysis
+- `analyze_multimodal_architectures()`: Model architecture ratio analysis
+- `analyze_task_fairness()`: Task category fairness median calculations
 
-## Development Status
-
-Based on the configuration, the planned development phases are:
-1. ✅ 创建Python数据读取和预处理模块 (Create Python data reading and preprocessing module)
-2. ✅ 实现多模态智能体类型占比分析功能 (Implement multimodal agent type ratio analysis)
-3. ✅ 实现多模态大模型架构占比分析功能 (Implement multimodal model architecture ratio analysis) 
-4. ✅ 实现任务类别智能体公正性中位数分析功能 (Implement task category agent fairness median analysis)
-5. 🔄 开发HTML数据看板生成器 (Develop HTML dashboard generator)
-6. ⏸️ 集成图表可视化和样式设计 (Integrate chart visualization and style design)
-
-## Branch Structure
-
-- `main`: Initial state with dataset only
-- `by-codebuddy-ide-with-claude-sonnet-4-in-new-way-without-plan-mode`: Implementation branch
-- `by-codebuddy-ide-with-claude-sonnet-4-in-new-way-in-plan-mode`: Alternative implementation branch
-
-## Expected Commands (when implemented)
+## Common Commands
 
 ```bash
-# Run data analysis
+# Run complete data analysis and generate dashboard data
 python analyze_data.py
 
-# View dashboard
-# Open generated HTML file in browser
+# View dashboard (requires HTTP server for CORS)
+# Option 1: Python built-in server
+python -m http.server 8000
+# Then open http://localhost:8000/data-dashboard.html
+
+# Option 2: Direct file access (may have CORS issues)
+# Open data-dashboard.html directly in browser
 ```
+
+## Development Notes
+
+- Dashboard uses Chart.js for all visualizations (pie charts, bar charts, line charts)
+- Data processing handles UTF-8 encoding for Chinese text
+- HTML dashboard is responsive with gradient backgrounds and card-based layout
+- All external dependencies loaded via CDN (Chart.js)
+- JSON data files are generated automatically by the Python analysis script
